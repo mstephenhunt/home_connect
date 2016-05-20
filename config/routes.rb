@@ -1,9 +1,16 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-  root 'users#new'
+  root    'sessions#new'
+  get     'new_user'      => 'users#new'
+  post    'login'         => 'sessions#create'
+  delete  'logout'        => 'sessions#destroy'
   resources :users
 
+  # Catch all
+  match "*path", to: "status_redirect#not_found", via: :all
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'

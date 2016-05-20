@@ -1,0 +1,2 @@
+module StatusRedirectHelper
+end
