@@ -2,7 +2,11 @@ class SessionsController < ApplicationController
   skip_before_action :require_login, only: [:new, :create]
   
   def new
-    # show login screen
+    # show login screen if you're not logged in
+    # otherwise, route the user to user#show
+    if logged_in?
+      redirect_to user_url(current_user)
+    end
   end
   
   def create

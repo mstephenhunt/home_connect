@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
+    skip_before_action :require_login, only: [:new, :create]
 
     def show
-        @user = User.find(params[:id])
+        # Prevent the user from routing to anywhere but their user
+        @user = User.find(@current_user.id)
     end
     
     def new
@@ -14,10 +16,12 @@ class UsersController < ApplicationController
             # redirect_to uses RESTful routing. When provided a specific object
             # it goes to that object's 'show' action
             
-            # puts user_url(@user)
+            # log in the user
+            log_in(@user)
+            
             # the user_url with argument @user builds out the url to that resource
             # https://home-connect-mstephenhunt.c9users.io/users/5
-            redirect_to @user
+            redirect_to user_url(@user)
         else
             render 'new'
         end
