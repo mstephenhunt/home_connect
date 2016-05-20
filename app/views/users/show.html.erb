@@ -1,11 +1,16 @@
-<h1>User#show</h1>
-<p>User path selected</p>
-<%= @user.name %> <span> -- </span> <%= @user.email %>
+<h1>User: <%= @current_user.name %> <span> -- </span> <%= @current_user.email %></h1>
 
- <% if logged_in? %>
-    <p>Current user</p>
-    <%= @current_user.name %> <span> -- </span> <%= @current_user.email %> 
+<% if @user.plugs.any? %>
+ <p>Has plugs</p>
+ <p>Number of plugs: <%= @plugs.count %></p>
+ <ul>
+  <%# Explanation of how this partial is rendering: 
+      https://www.railstutorial.org/book/updating_and_deleting_users#sec-partial_refactoring
+  %>
+  <%= render @plugs %>
+ </ul>
+<% else %>
+ <p>No plugs associated with this user</p>
 <% end %>
 
-<br><br>
 <%= link_to "Log out", logout_path, method: :delete %>
