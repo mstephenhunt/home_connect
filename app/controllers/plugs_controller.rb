@@ -6,7 +6,7 @@ class PlugsController < ApplicationController
     
     def create
         @plug = @current_user.plugs.new(plug_params)
-        @plug.state = "off"
+        #@plug.state = "off"
         
         
         @plug.save
