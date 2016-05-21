@@ -1,6 +1,8 @@
 <h1>Log in</h1>
 
 <%= form_for(:session, url: login_path) do |f| %>
+    <%= render 'shared/error_messages', obj: @user %>
+
     <%= f.label :email %>
     <%= f.email_field :email %>
     

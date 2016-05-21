@@ -1,8 +1,9 @@
-<% if @user.errors.any? %>
+<%# obj is generic object passed into this form to show error messages %>
+<% if !obj.nil? && obj.errors.any? %>
 <div>
-    <p>The form contains <%= pluralize(@user.errors.count, "error") %></p>
+    <p><%= "Error".pluralize(obj.errors.count) %>:</p>
     <ul>
-        <% @user.errors.full_messages.each do |msg| %>
+        <% obj.errors.full_messages.each do |msg| %>
             <li><%= msg %></li>
         <% end %>
     </ul>

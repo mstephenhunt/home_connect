@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   post    'login'         => 'sessions#create'
   delete  'logout'        => 'sessions#destroy'
   get     'add_plug'      => 'plugs#new'
-  post    'plugs'          => 'plugs#create'
+  post    'plugs'         => 'plugs#create'
   resources :users
 
   # Catch all
