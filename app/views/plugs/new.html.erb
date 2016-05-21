@@ -1,0 +1,7 @@
+<h1>Create Plug</h1>
+<%= form_for(@plug) do |p| %>
+    <%= p.label :name %>
+    <%= p.text_field :name %>
+    
+    <%= p.submit "Create plug" %>
+<% end %>
