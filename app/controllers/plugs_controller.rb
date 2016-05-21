@@ -6,14 +6,11 @@ class PlugsController < ApplicationController
     
     def create
         @plug = @current_user.plugs.new(plug_params)
-        #@plug.state = "off"
-        
-        
-        @plug.save
-        
-        
-        
-        redirect_to @current_user
+        if @plug.save
+            redirect_to @current_user
+        else
+            render 'new'
+        end
     end
     
     private

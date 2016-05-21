@@ -3,6 +3,7 @@ class Plug < ActiveRecord::Base
   before_validation   :before_validation_plug
   
   validates :user_id, presence: true
+  validates :name, presence: true
   validates :state, inclusion: { in: %w(on off) }
   
   private
