@@ -1,4 +1,5 @@
 <li>
-    <h2><%= plug.name %></h2>
-    <p><%= plug.state %></p>
+    <h2><%= plug.name %></h2> 
+    <span><%= plug.state %> | <%= link_to "Delete", plug, method: :delete %></span>
+
 </li>

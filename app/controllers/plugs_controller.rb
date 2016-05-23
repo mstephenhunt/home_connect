@@ -13,6 +13,11 @@ class PlugsController < ApplicationController
         end
     end
     
+    def destroy
+        Plug.find(params[:id]).destroy
+        redirect_to current_user
+    end
+    
     private
         def plug_params
             params.require(:plug).permit(:name, :user_id)    
