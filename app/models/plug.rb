@@ -6,6 +6,16 @@ class Plug < ActiveRecord::Base
   validates :name, presence: true
   validates :state, inclusion: { in: %w(on off) }
   
+  def flip_state
+    if self.state == "on"
+      self.state = "off"
+    elsif self.state == "off"
+      self.state = "on"
+    end
+    
+    self.save
+  end
+  
   private
     def before_validation_plug
       clean_state

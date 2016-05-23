@@ -13,6 +13,13 @@ class PlugsController < ApplicationController
         end
     end
     
+    def edit
+        plug = Plug.find_by_id(params[:id])
+        plug.flip_state
+        
+        redirect_to current_user
+    end
+    
     def destroy
         Plug.find(params[:id]).destroy
         redirect_to current_user
