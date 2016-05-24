@@ -1,6 +1,11 @@
 <li>
     <h2><%= plug.name %></h2> 
-    <span><%= plug.state %> | 
+    <span><%= plug.get_state %> | 
+    <% if !plug.feed_id.nil? %>
+        ID: <%= plug.feed_id %> |
+    <% else %>
+        No feed id |
+    <% end %>
     <%= link_to "Delete", plug, method: :delete %> | 
     <%= link_to "Flip state", edit_plug_path(plug) %>
     </span>

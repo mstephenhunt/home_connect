@@ -1,10 +1,17 @@
 class Plug < ActiveRecord::Base
+  require 'AdafruitIntegration'
+  
   belongs_to          :user
   before_validation   :before_validation_plug
   
   validates :user_id, presence: true
   validates :name, presence: true
   validates :state, inclusion: { in: %w(on off) }
+  
+  def get_state
+    # call integration function to get plug's state
+    AdafruitIntegration.get_external_state(self.feed_id)
+  end
   
   def flip_state
     if self.state == "on"
@@ -17,6 +24,8 @@ class Plug < ActiveRecord::Base
   end
   
   private
+    
+  
     def before_validation_plug
       clean_state
     end
