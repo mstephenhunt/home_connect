@@ -14,10 +14,16 @@ class PlugsController < ApplicationController
     end
     
     def edit
-        plug = Plug.find_by_id(params[:id])
-        plug.flip_state
-        
-        redirect_to current_user
+        @plug = Plug.find(params[:id])
+    end
+    
+    def update
+        @plug = Plug.find(params[:id])
+        if @plug.update_attributes(plug_params)
+            redirect_to current_user
+        else
+            render 'edit'
+        end
     end
     
     def destroy
@@ -27,6 +33,6 @@ class PlugsController < ApplicationController
     
     private
         def plug_params
-            params.require(:plug).permit(:name, :user_id)    
+            params.require(:plug).permit(:name, :user_id, :feed_id)
         end
 end
