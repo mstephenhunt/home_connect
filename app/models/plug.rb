@@ -6,6 +6,7 @@ class Plug < ActiveRecord::Base
   validates :name, presence: true
   validates :state, inclusion: { in: %w(on off) }
   
+  
   def get_state
     # call integration function to get plug's state
     state = get_external_state(self.feed_id)
@@ -23,10 +24,28 @@ class Plug < ActiveRecord::Base
   end
   
   
+  def flip_plug
+    # go out to adafruit to get the feed. Obviously change this later...
+    state = get_external_state(self.feed_id)
+    
+    # if error, just exit
+    if !state[:error].nil?
+      return
+    end
+    
+    # whatever the state is, flip it
+    state[:state] = flip_state(state[:state])
+    
+    # write out that state change to adafruit
+    write_state(self.feed_id, state[:state])
+  end
+  
+  
   private
     def before_validation_plug
       clean_state
     end
+  
   
     def clean_state
       # if state is undefined, default to "off"
@@ -37,6 +56,18 @@ class Plug < ActiveRecord::Base
       # whatever state was defined, downcase it
       self.state = self.state.downcase
     end
+    
+    
+    def flip_state(state)
+      if state == "ON"
+        return "OFF"
+      elsif state == "OFF"
+        return "ON"
+      else
+        return "OFF"
+      end
+    end
+    
 
     # Either returns :state with last value or :error
     def get_external_state(feed_id)
@@ -52,6 +83,7 @@ class Plug < ActiveRecord::Base
         end
     end
     
+    
     def error_codes(error)
         puts case error
         when "not found - API documentation can be found at https://io.adafruit.com/api/docs"
@@ -63,4 +95,11 @@ class Plug < ActiveRecord::Base
         end
     end
 
+
+    def write_state(feed_id, state)
+        aio = Adafruit::IO::Client.new :key => '792e5b98480a408ca686a334b05bc68e'
+        data = aio.feeds(feed_id).data.last
+        data.value = state
+        data.save
+    end
 end

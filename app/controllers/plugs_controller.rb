@@ -31,6 +31,12 @@ class PlugsController < ApplicationController
         redirect_to current_user
     end
     
+    def flip_plug
+        plug = Plug.find(params[:format])
+        plug.flip_plug
+        redirect_to current_user
+    end
+    
     private
         def plug_params
             params.require(:plug).permit(:name, :user_id, :feed_id)

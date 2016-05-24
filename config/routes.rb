@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get     'new_user'      => 'users#new'
   post    'login'         => 'sessions#create'
   delete  'logout'        => 'sessions#destroy'
+  get     'flip_plug'     => 'plugs#flip_plug'
   resources :plugs
   resources :users
 
