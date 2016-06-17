@@ -6,9 +6,14 @@ class User < ActiveRecord::Base
     has_secure_password
     validates   :name, presence: true
     validates   :email, presence: true,
-                uniqueness: true
+                        uniqueness: { case_sensitive: false }
+    validates :password, presence: true, 
+                         length: { minimum: 6 }
+                
                 
     def find_and_auth_user(username, password)
+        username.downcase!
+        
         user = User.find_by(email: username)
         auth = false
         
