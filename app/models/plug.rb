@@ -2,11 +2,12 @@ class Plug < ActiveRecord::Base
   belongs_to          :user
   before_validation   :before_validation_plug
   
-  validates :user, presence: true
-  validates :user_id, presence: true
   validates :name, presence: true
   validates :feed_id, presence: true
   validates :state, inclusion: { in: %w(on off) }
+  validates :user_id, presence: true
+  validates :user, presence: true
+
   
   def get_state
     # call integration class to get plug's state
