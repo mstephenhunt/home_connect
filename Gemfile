@@ -48,6 +48,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'faker'
   gem 'shoulda-matchers', '~>3.0'
+  gem 'shoulda-context'
 end
 
 group :development do

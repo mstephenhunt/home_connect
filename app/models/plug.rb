@@ -1,25 +1,29 @@
 class Plug < ActiveRecord::Base
   belongs_to          :user
+  
   before_validation   :before_validation_plug
   
-  validates :name, presence: true
-  validates :feed_id, presence: true
-  validates :state, inclusion: { in: %w(on off) }
+  validates :name,    presence: true
+  validates :feed_id, presence: true               
+  validates :state,   presence: true, inclusion: { in: %w(ON OFF ERR) }
   validates :user_id, presence: true
-  validates :user, presence: true
+  validates :user,    presence: true
 
-  
+  # returns a hash with params [:error] and [:state]
   def get_state
+    if self.feed_id.nil?
+      return { state: nil, error: "Error: no feed provided" }
+    end
+    
     # call integration class to get plug's state
     state = PlugExtIntegration.get_state(self.feed_id)
     
-    if !state[:error].nil?
-      return state[:error]
-    elsif !state[:state].nil?
-      return state[:state]
-    else
-        return "Error finding state"
+    # if somehow you didn't get a state or an error, mark there being a problem
+    if state[:error].nil? && state[:state].nil?
+      state[:error] = "Error finding state"
     end
+    
+    return state
   end
   
   
@@ -41,22 +45,26 @@ class Plug < ActiveRecord::Base
   
   
   private
+  
     def before_validation_plug
-      clean_state
-    end
-  
-  
-    def clean_state
-      # if state is undefined, default to "off"
-      if self.state.nil?
-        self.state = "off"
+      # if the plug's state isn't valid, attempt to go out and find it
+      if self.state != "ON" || self.state != "OFF" || self.state != "ERR"
+        ret_state = self.get_state
+        
+        # if you got a state back, set it on the plug. Otherwise set ERR
+        if(!ret_state[:state].nil?)
+          self.state = ret_state[:state]
+        else
+          self.state = "ERR"
+        end
       end
       
-      # whatever state was defined, downcase it
-      self.state = self.state.downcase
+      # If plug state is undefined, default to ERR
+      if self.state.nil?
+        self.state == "ERR"
+      end
     end
-    
-    
+
     def flip_state(state)
       if state == "ON"
         return "OFF"

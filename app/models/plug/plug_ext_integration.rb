@@ -22,16 +22,20 @@ class Plug
         
         # Returns true if good, :error if no good
         def self.set_state(feed_id, state)
-            aio = get_aio
-            feed = aio.feeds.retrieve(feed_id)
-            
-            if(defined? feed.error)
-                return :error => feed.error
+            begin
+                aio = get_aio
+                feed = aio.feeds.retrieve(feed_id)
+                
+                if(defined? feed.error)
+                    return :error => feed.error
+                end
+                
+                data = aio.feeds(feed_id).data.last
+                data.value = state
+                data.save
+            rescue StandardError
+                return :error => "threw exception"
             end
-            
-            data = aio.feeds(feed_id).data.last
-            data.value = state
-            data.save
         end
         
         private
