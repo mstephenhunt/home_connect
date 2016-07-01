@@ -40,7 +40,7 @@ class Plug
         
         private
             def self.get_aio
-                aio = Adafruit::IO::Client.new :key => '792e5b98480a408ca686a334b05bc68e'
+                aio = Adafruit::IO::Client.new :key => ENV["ADAFRUIT_API_KEY"]
             end
     end
 end
