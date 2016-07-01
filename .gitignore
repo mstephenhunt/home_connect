@@ -20,4 +20,4 @@
 /notes/*
 
 # Ignore application.yml which holds keys
-# /config/application.yml
+/config/application.yml
