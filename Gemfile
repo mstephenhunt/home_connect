@@ -8,6 +8,10 @@ gem 'bcrypt', '3.1.7'
 
 gem 'adafruit-io'
 
+# Bootstrap
+gem 'bootstrap-sass', '3.3.6'
+gem 'autoprefixer-rails'
+
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets

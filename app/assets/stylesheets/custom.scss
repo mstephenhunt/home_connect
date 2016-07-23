@@ -1,0 +1,38 @@
+/* app/assets/stylesheets/custom.scss */
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+#menu_logo {
+    padding: 5px;
+}
+
+.login-form {
+    margin: 0px;
+    padding: 0px;
+}
+
+.jumbotron {
+    text-align: center;
+    position: absolute; 
+    /*top: 50%; 
+    left: 50%;
+    transform: translate(-50%, -50%);*/
+    width: 100%;
+    background-color: white;
+}
+
+#jumbotron-inner {
+    background-color: #eee; 
+    padding: 20px; 
+    border-radius: 6px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.login-form {
+    padding: 5px;
+}
+
+#account-signup {
+    font-size: 14px;
+}
