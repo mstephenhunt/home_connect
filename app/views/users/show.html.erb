@@ -1,17 +1,18 @@
-<h1>User: <%= @current_user.name %> <span> -- </span> <%= @current_user.email %></h1>
-
-<% if @user.plugs.any? %>
- <p>Has plugs</p>
- <p>Number of plugs: <%= @plugs.count %></p>
- <ul>
-  <%# Explanation of how this partial is rendering: 
-      https://www.railstutorial.org/book/updating_and_deleting_users#sec-partial_refactoring
-  %>
-  <%= render @plugs %>
- </ul>
-<% else %>
- <p>No plugs associated with this user</p>
-<% end %>
-
-<%= link_to "Add plug", new_plug_path %>
-<%= link_to "Log out", logout_path, method: :delete %>
+<%# app/views/user/show.html.erb %>
+<div class="container">
+ <%= render "shared/header" %>
+</div>
+<div class="container">
+ <% if @user.plugs.any? %>
+  <ul>
+   <%# Explanation of how this partial is rendering: 
+       https://www.railstutorial.org/book/updating_and_deleting_users#sec-partial_refactoring
+   %>
+   <%= render @plugs %>
+  </ul>
+ <% else %>
+  <p>No plugs associated with this user</p>
+ <% end %>
+ 
+ <%= link_to "Add plug", new_plug_path %>
+</div>

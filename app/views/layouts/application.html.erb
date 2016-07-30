@@ -12,11 +12,6 @@
   <![endif]-->
 </head>
 <body>
-  <% if true==false %>
-  <%= render 'shared/header'%>
-  <% end %>
-  <div class="container" style="position: relative; height: 500px; width: 100%; padding: 0px;">
-      <%= yield %>
-  </div>
+  <%= yield %>
 </body>
 </html>

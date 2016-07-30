@@ -1,14 +1,22 @@
 <%# app/views/shared/_header.html.erb %>
-<nav class="navbar navbar-default navbar-static-top" style="background-color: white; margin-bottom: 20px;">
-    <div class="container">
-        <div class="navbar-header">
-            <%# <a class="navbar-brand" href="#">Spudtronics</a> %> 
-            <%= link_to image_tag("spudtronics.png", alt: "Spudtronics", :id => "menu_logo"), '#' %>
-        </div>
-        <% if true==false %>
-            <ul class="nav navbar-nav">
-                <li><a href="#">Home</a></li>
-            </ul>
-        <% end %>
+<nav class="navbar navbar-default navbar-static-top">
+    <div class="navbar-header">
+        <%= link_to image_tag("spudtronics.png", alt: "Spudtronics", :id => "menu_logo"), "/" %>
     </div>
+    <ul class="nav navbar-nav">
+        <li class="hide-mobile menu-li">
+            <div>
+                <%= link_to "/", class: "btn btn-default no-border-btn" do %>
+                    <span><%= @current_user.name %></span>
+                <% end %>
+            </div>
+        </li>
+        <li class="menu-li">
+            <div>
+                <%= link_to logout_path, method: :delete, class: "btn btn-default no-border-btn" do %>
+                    <span>Log out</span><span class="glyphicon glyphicon-log-out" aria-hidden="true" id="log-out-glyph"></span>
+                <% end %>
+            </div>
+        </li>
+    </ul>
 </nav>

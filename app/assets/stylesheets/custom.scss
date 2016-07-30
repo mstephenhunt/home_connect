@@ -36,3 +36,49 @@
 #account-signup {
     font-size: 14px;
 }
+
+// Navbar
+.navbar-default {
+    background-color: white; 
+    display: flex; 
+    justify-content: space-between; 
+    height: 50px;
+}
+
+.navbar-nav {
+    margin: 0px;
+}
+
+.navbar:before {
+    content: none;
+}
+
+.navbar:after {
+    content: none;
+}
+
+.menu-li {
+    height: 50px;
+    display: flex !important;
+    align-items: center;
+}
+
+// This is some nonsense to hide the username li in the nav menu. Needed
+// to !important display: flex on menu-li since bootstrap was always
+// overwriting it.
+@media only screen and (max-width: 768px){
+    .hide-mobile {
+        display: none !important;
+    }
+}
+// End navbar
+
+// Buttons
+.no-border-btn {
+    border: none;
+}
+
+#log-out-glyph {
+    padding-left: 5px;
+}
+// End buttons

@@ -1,22 +1,24 @@
-<div class="jumbotron">
-    <%= image_tag("jumbotron-logo.png", alt: "Spudtronics", :id => "jumbotron_logo") %>
-    <div id="jumbotron-inner">
-        <%= form_for(:session, url: login_path, :html => { :class => "form-horizontal" }) do |f| %>
-            <%= render 'shared/error_messages', obj: @user %>
-            <div class="form-group login-form">
-                <%= f.email_field :email, placeholder: "email", :class => "form-control" %>
-            </div>
+<div class="container" style="position: relative; height: 500px; width: 100%; padding: 0px;">
+    <div class="jumbotron">
+        <%= image_tag("jumbotron-logo.png", alt: "Spudtronics", :id => "jumbotron_logo") %>
+        <div id="jumbotron-inner">
+            <%= form_for(:session, url: login_path, :html => { :class => "form-horizontal" }) do |f| %>
+                <%= render 'shared/error_messages', obj: @user %>
+                <div class="form-group login-form">
+                    <%= f.email_field :email, placeholder: "email", :class => "form-control" %>
+                </div>
+                
+                <div class="form-group login-form">
+                    <%= f.password_field :password, placeholder: "password", :class => "form-control" %>
+                </div>
+                
+                <div class="form-group">
+                    <%= f.submit "Log in", :class => "btn btn-default" %>
+                </div>
+            <% end %>
             
-            <div class="form-group login-form">
-                <%= f.password_field :password, placeholder: "password", :class => "form-control" %>
-            </div>
+            <p id="account-signup">New user? <%= link_to("Sign up", new_user_path) %></p>
             
-            <div class="form-group">
-                <%= f.submit "Log in", :class => "btn btn-default" %>
-            </div>
-        <% end %>
-        
-        <p id="account-signup">New user? <%= link_to("Sign up", new_user_path) %></p>
-        
+        </div>
     </div>
 </div>
