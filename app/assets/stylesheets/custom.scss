@@ -43,6 +43,7 @@
     display: flex; 
     justify-content: space-between; 
     height: 50px;
+    margin-bottom: 0px;
 }
 
 .navbar-nav {
@@ -82,3 +83,70 @@
     padding-left: 5px;
 }
 // End buttons
+
+// Plug rows
+.plug-row {
+    border-radius: 50px;
+    padding: 0px;
+    width: 100%;
+    height: 55px;
+    margin-bottom: 15px;
+    background-color: white;
+}
+
+.plug-row-name {
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 15px;
+    display: inline;
+    font-family: sans-serif;
+    color: #525252;
+}
+
+.plug-toggle-button {
+    border-radius: inherit;
+    box-shadow: inset 0px 0px 4px 1px rgba(232,232,232,1);
+    font-size: 25px;
+    padding: 5px;
+    background-color: inherit;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    color: #525252;
+}
+
+.plug-toggle-button-inner {
+    border-radius: 100px;
+    display: inherit;
+    align-items: inherit;
+    height: 100%;
+    padding: 0px 10px 0px 10px;
+}
+
+.plug-toggle-on {
+    box-shadow: 0px 0px 10px 3px rgba(120,235,139,1);
+    background-color: #aaf7b6;
+}
+
+.plug-toggle-off {
+    box-shadow: 0px 0px 10px 3px rgba(116,122,117,1);
+    background-color: #a7b0a9;
+}
+
+// End Plug Rows
+
+// Room
+.room {
+    margin-top: 5px;
+    background-color: #eee;
+    margin: 10px 5px 5px 5px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.room-title {
+    margin-top: 0px;
+    font-family: Candara,Calibri,Segoe,Segoe UI,Optima,Arial,sans-serif;
+    font-weight: bold;
+    font-variant: small-caps;
+}
+// End Room

@@ -1,14 +1,25 @@
-<li>
-    <h2><%= plug.name %></h2> 
-    <span><%= plug.state %> | 
-    <% if !plug.feed_id.nil? %>
-        ID: <%= plug.feed_id %> |
-    <% else %>
-        No feed id |
+<%# shared/_plug.html.erb %>
+<div class="col-md-4">
+    <div class="plug-row">
+        <%= link_to flip_plug_path(plug), class: "btn btn-default no-border-btn plug-toggle-button" do %>
+            <span class="<%= @class %> glyphicon glyphicon-off plug-toggle-button-inner" aria-hidden="true"></span><h3 class="plug-row-name"><%= plug.name %></h3>
+        <% end %>
+    </div>
+        
+    <% if true==false %>
+        <div>
+            <%= link_to "Edit", edit_plug_path(plug) %>
+            <%= link_to "Delete", plug, method: :delete %>
+        </div>
+    
+        <%= plug.state %> | 
+        <% if !plug.feed_id.nil? %>
+            ID: <%= plug.feed_id %> |
+        <% else %>
+            No feed id |
+        <% end %>
+        <%= link_to "Flip", flip_plug_path(plug) %> |
+        <%= link_to "Delete", plug, method: :delete %> | 
+        <%= link_to "Edit", edit_plug_path(plug) %>
     <% end %>
-    <%= link_to "Flip", flip_plug_path(plug) %> |
-    <%= link_to "Delete", plug, method: :delete %> | 
-    <%= link_to "Edit", edit_plug_path(plug) %>
-    </span>
-
-</li>
+</div>
