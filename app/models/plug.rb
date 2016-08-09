@@ -20,7 +20,7 @@ class Plug < ActiveRecord::Base
     
     # if somehow you didn't get a state or an error, mark there being a problem
     if state[:error].nil? && state[:state].nil?
-      state[:error] = "Error finding state"
+      return { state: nil, error: "Error finding state" }
     end
     
     return state
@@ -28,24 +28,25 @@ class Plug < ActiveRecord::Base
   
   
   def flip_plug
-    # go out to adafruit to get the feed. Obviously change this later...
-    state = PlugExtIntegration.get_state(self.feed_id)
-    
-    # if error, just exit
-    if !state[:error].nil?
-      return
-    end
-    
     # whatever the state is, flip it
-    state[:state] = flip_state(state[:state])
+    flipped_state = flip_state(self.state)
     
     # write out that state change to adafruit
-    PlugExtIntegration.set_state(self.feed_id, state[:state])
+    write_out = PlugExtIntegration.set_state(self.feed_id, flipped_state)
+    
+    # if an error has been returned, return the error hash
+    if (defined? write_out[:error])
+      return write_out
+    end
+    
+    # Save the state change on this plug, save it locally
+    self.state = flipped_state
+    self.save
   end
   
   
   private
-  
+
     def before_validation_plug
       # if the plug's state isn't valid, attempt to go out and find it
       if self.state != "ON" || self.state != "OFF" || self.state != "ERR"

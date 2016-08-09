@@ -44,6 +44,7 @@ RSpec.describe Plug, type: :model do
             @plug.flip_plug
             new_state = @plug.get_state
             
+
             if(initial_state == "ON")
                 expect(new_state).to eq("OFF")
             elsif(initial_state == "OFF")
@@ -51,29 +52,45 @@ RSpec.describe Plug, type: :model do
             end
         end
         
-        it 'returns nil if a bad plug id' do
-            @plug.feed_id = "bad_id"
-            
-            expect(@plug.flip_plug).to be_nil
-        end
-        
-        it 'initializes new plugs with the correct state' do
-            plug = Plug.new(feed_id: "int_test")
-            
-            expect(plug.get_state[:state]).to eq(@plug.state)
-        end
-        
-        it 'caches the current state in the db before a flip' do
-            db_plug = Plug.find_by(@plug.id)
-                
-            expect(db_plug.state).to eq(@plug.state)
-        end
-        
-        it 'caches the current state in the db after a flip' do
+        it 'caches the changed state' do
+            local_initial_state = @plug.state
             @plug.flip_plug
-            db_plug = Plug.find_by(@plug.id)
-                
-            expect(db_plug.state).to eq(@plug.state)
+            local_new_state = @plug.state
+            
+            if(local_initial_state == "ON")
+                expect(local_new_state).to eq("OFF")
+            elsif(local_initial_state == "OFF")
+                expect(local_new_state).to eq("ON")
+            end
         end
+        
+        it 'returns :error if a bad plug id' do
+            @plug.feed_id = "bad_id"
+            expect(@plug.flip_plug).to have_key(:error)
+        end
+    end
+    
+    describe '.save()' do
+        before(:each) do
+            @user = FactoryGirl.create(:user_with_plug)
+            @plug = @user.plugs.find_by(user_id: @user.id)
+        end
+    
+        it 'initializes new plugs with the correct state in memory' do
+            # setup comes from factory girl
+            
+            # evaluate
+            expect(@plug.get_state[:state]).not_to be_nil
+            expect(@plug.get_state[:state]).to eq(@plug.state)
+        end
+        
+        it 'initializes new plugs with the correct state in the DB' do
+            # setup
+            @cached_plug = Plug.find_by(@plug.id)
+            
+            # evaluate
+            expect(@plug.get_state[:state]).not_to be_nil
+            expect(@plug.get_state[:state]).to eq(@cached_plug.state)
+        end        
     end
 end
