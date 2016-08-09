@@ -1,4 +1,13 @@
 <%# shared/_plug.html.erb %>
+
+<%# set the button style for this row %>
+<% if plug.state == "OFF" %>
+    <% @class = "plug-toggle-off" %>
+<% elsif plug.state == "ON" %>
+    <% @class = "plug-toggle-on" %>
+<% end %>
+
+
 <div class="col-md-4">
     <div class="plug-row">
         <%= link_to flip_plug_path(plug), class: "btn btn-default no-border-btn plug-toggle-button" do %>
