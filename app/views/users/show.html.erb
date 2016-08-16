@@ -4,25 +4,7 @@
 </div>
 <div class="container">
   <section class="room">
-    <h2 class="room-title">Bedroom</h2>
-    <% @plugs.each_with_index do |plug, index| %>
-    <%# render this every two plugs %>
-      <% if (index+1) % 2 == 0%>
-        <div class="row">
-          <%= render @plugs[index-1] %>
-          <%= render @plugs[index] %>
-        </div>
-        
-      <%# render this if the last plug is an odd number %>
-      <% elsif index+1 == @plugs.length %>
-        <div class="row">
-          <%= render @plugs[index] %>
-      <% end %>
-    <% end %>
-  </section>
-  
-  <section class="room">
-    <h2 class="room-title">Livingroom</h2>
+    <h2 class="room-title">Your plugs</h2>
     <% @plugs.each_with_index do |plug, index| %>
     <%# render this every two plugs %>
       <% if (index+1) % 2 == 0%>
