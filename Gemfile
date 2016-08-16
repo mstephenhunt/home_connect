@@ -10,8 +10,6 @@ gem 'adafruit-io'
 gem 'bootstrap-sass', '3.3.6'
 gem 'autoprefixer-rails'
 
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -43,6 +41,9 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   
+  # Use sqlite3 as the database for Active Record
+  gem 'sqlite3'
+
   # Gems used for running tests
   gem 'rspec-rails', '~> 3.0.0'
   gem 'factory_girl_rails'
