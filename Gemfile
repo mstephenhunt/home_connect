@@ -4,11 +4,12 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
 gem 'bcrypt', '3.1.7'
-gem 'adafruit-io'
+gem 'adafruit-io', '1.0.3'
 
 # Bootstrap
-gem 'bootstrap-sass', '3.3.6'
+gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
+gem 'jquery-turbolinks'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'

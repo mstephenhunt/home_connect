@@ -7,28 +7,22 @@
     <% @class = "plug-toggle-on" %>
 <% end %>
 
-
 <div class="col-md-4">
     <div class="plug-row">
+        <ul class="plug-settings">
+            <li class="dropdown">
+                <a href="#" class="settings-icon dropdown-toggle" data-toggle="dropdown">
+                    <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><%= link_to "Edit", edit_plug_path(plug), class: "dropdown-entry" %></li>
+                    <li><%= link_to "Delete", plug, method: :delete, class: "dropdown-entry" %></li>
+                </ul>
+            </li>
+        </ul>
         <%= link_to flip_plug_path(plug), class: "btn btn-default no-border-btn plug-toggle-button" do %>
-            <span class="<%= @class %> glyphicon glyphicon-off plug-toggle-button-inner" aria-hidden="true"></span><h3 class="plug-row-name"><%= plug.name %></h3>
+            <span class="<%= @class %> glyphicon glyphicon-off plug-toggle-button-inner" aria-hidden="true"></span>
+            <h3 class="plug-row-name"><%= plug.name %></h3>
         <% end %>
-    </div>
-        
-    <% if true==false %>
-        <div>
-            <%= link_to "Edit", edit_plug_path(plug) %>
-            <%= link_to "Delete", plug, method: :delete %>
         </div>
-    
-        <%= plug.state %> | 
-        <% if !plug.feed_id.nil? %>
-            ID: <%= plug.feed_id %> |
-        <% else %>
-            No feed id |
-        <% end %>
-        <%= link_to "Flip", flip_plug_path(plug) %> |
-        <%= link_to "Delete", plug, method: :delete %> | 
-        <%= link_to "Edit", edit_plug_path(plug) %>
-    <% end %>
 </div>
