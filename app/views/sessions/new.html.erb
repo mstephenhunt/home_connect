@@ -17,7 +17,9 @@
                 </div>
             <% end %>
             
-            <p id="account-signup">New user? <%= link_to("Sign up", new_user_path) %></p>
+            <% if ENV["SHOW_SIGNUP"] %>
+                <p id="account-signup">New user? <%= link_to("Sign up", new_user_path) %></p>
+            <% end %>
             
         </div>
     </div>
