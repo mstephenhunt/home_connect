@@ -5,7 +5,8 @@ __Configuring Enviornment:__
   # config/application.yml  
     
     `   defaults: &defaults  
-          ADAFRUIT_API_KEY: YOUR_AF_IO_KEY  
+          ADAFRUIT_API_KEY: YOUR_AF_IO_KEY
+          SHOW_SIGNUP: true/false (this shows or hides the signup button)
           
         development:  
           <<: *defaults  
