@@ -1,5 +1,6 @@
 class Plug < ActiveRecord::Base
-  belongs_to          :user
+  belongs_to          :user,  dependent: :destroy
+  belongs_to          :room
   
   before_validation   :before_validation_plug
   
@@ -8,6 +9,8 @@ class Plug < ActiveRecord::Base
   validates :state,   presence: true, inclusion: { in: %w(ON OFF ERR) }
   validates :user_id, presence: true
   validates :user,    presence: true
+  validates :room_id, presence: true
+  validates :room,    presence: true
 
   # returns a hash with params [:error] and [:state]
   def get_state

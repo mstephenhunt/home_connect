@@ -1,7 +1,10 @@
 # spec/models/user.rb
 require 'spec_helper'
 
-describe User do
+RSpec.describe User, type: :model do
+    it { should have_many(:plugs).dependent(:destroy) }
+    it { should have_many(:rooms).dependent(:destroy) }
+    
                     ##### Property Validation Tests #####
     describe "(basic presence validations)" do
         it "has a valid factory" do
@@ -11,7 +14,6 @@ describe User do
             expect(FactoryGirl.build(:user, name: nil)).not_to be_valid
         end
     end
-    
     
     describe "(password validations)" do
         it "is invalid without password" do

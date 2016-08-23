@@ -1,8 +1,9 @@
-# spec/models/plug.rb
+# spec/models/plug_spec.rb
 require 'spec_helper'
 
 RSpec.describe Plug, type: :model do
-    it { should belong_to(:user) }
+    it { should belong_to(:user).dependent(:destroy) }
+    it { should belong_to(:room) }
     it { should validate_presence_of(:feed_id) }
     it { should validate_presence_of(:name) }
     #it { should validate_inclusion_of(:state).in_array(['ON', 'OFF', 'ERR']) }

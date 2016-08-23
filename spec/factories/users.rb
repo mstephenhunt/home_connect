@@ -10,7 +10,8 @@ FactoryGirl.define do
   
         factory :user_with_plug do
             after(:create) do |user|
-                create(:plug, user: user)
+                room = create(:room, user: user)
+                create(:plug, user: user, room: room)
             end
         end
     end
