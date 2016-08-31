@@ -2,30 +2,30 @@
 
 <%= form_for(object, :html => { :class => "form-horizontal" }) do |o| %>
     <div class="form-group">
-        <div class="col-sm-3">
-            <%= o.label :name, class: "col-sm-1 control-label" %>
+        <div class="col-xs-3">
+            <%= o.label :name, class: "control-label" %>
         </div>
-        <div class="col-sm-9">
+        <div class="col-xs-9">
             <span class="form-row-glyphicon glyphicon glyphicon-tag" aria-hidden="true"></span>
             <%= o.text_field :name, class: "modal-form form-control" %>
         </div>
     </div>
     
     <div class="form-group">
-        <div class="col-sm-3">
-            <%= o.label :feed_id, class: "col-sm-1 control-label" %>
+        <div class="col-xs-3">
+            <%= o.label :feed_id, class: "control-label" %>
         </div>
-        <div class="col-sm-9">
+        <div class="col-xs-9">
             <span class="form-row-glyphicon glyphicon glyphicon-link" aria-hidden="true"></span>
             <%= o.text_field :feed_id, class: "modal-form form-control" %>     
         </div>
     </div>
     
     <div class="form-group">
-        <div class="col-sm-3">
-            <%= o.label :room_id, class: "col-sm-1 control-label" %>
+        <div class="col-xs-3">
+            <%= o.label :room_id, class: "control-label" %>
         </div>
-        <div class="col-sm-9">
+        <div class="col-xs-9">
             <span class="form-row-glyphicon glyphicon glyphicon-home" aria-hidden="true"></span>
             <%= o.text_field :room_id, class: "modal-form form-control" %>     
         </div>
