@@ -1,8 +1,9 @@
+# app/models/plug.rb
 class Plug < ActiveRecord::Base
-  belongs_to          :user,  dependent: :destroy
+  belongs_to          :user
   belongs_to          :room
   
-  before_validation   :before_validation_plug
+  before_validation   :before_validation
   
   validates :name,    presence: true
   validates :feed_id, presence: true               
@@ -50,7 +51,12 @@ class Plug < ActiveRecord::Base
   
   private
 
-    def before_validation_plug
+    def before_validation
+      clean_state
+      set_user_or_room
+    end
+    
+    def clean_state
       # if the plug's state isn't valid, attempt to go out and find it
       if self.state != "ON" || self.state != "OFF" || self.state != "ERR"
         ret_state = self.get_state
@@ -66,6 +72,24 @@ class Plug < ActiveRecord::Base
       # If plug state is undefined, default to ERR
       if self.state.nil?
         self.state == "ERR"
+      end
+    end
+    
+    def set_user_or_room
+      # if this is being created without a room or a user, 
+      # default it to 'Your plugs' room and/or set user_id
+      
+      # can't recover from this
+      if self.room.nil? && self.user_id.nil? 
+        return
+      end
+      
+      # no room id, set to 'Your Plugs'
+      if self.room.nil?
+        self.room = self.user.rooms.find_by(name: "Your Plugs")
+      # no user, set from the room you're in
+      elsif self.user.nil?
+        self.user = self.room.user
       end
     end
 

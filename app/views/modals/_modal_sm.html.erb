@@ -1,0 +1,25 @@
+<%# app/views/shared/_modal_sm.html.erb %>
+
+<%#
+    Takes arguments:
+        modal_id
+        header_glyphicon
+        header_title
+%>
+
+<div class="modal fade" id="<%= modal_id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-header-inner">
+                    <span class="glyphicon <%= header_glyphicon %> modal-header-glyphicon modal-header-element" aria-hidden="true"></span>
+                    <h4 class="modal-title modal-header-element" id="myModalLabel"><%= header_title %></h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <%#= Form will display here %>
+            </div>
+        </div>
+    </div>
+</div>

@@ -5,6 +5,7 @@ class UsersController < ApplicationController
         # Prevent the user from routing to anywhere but their user
         @user = User.find(@current_user.id)
         @plugs = @user.plugs
+        @rooms = @user.rooms.order(created_at: :desc)
     end
     
     def new

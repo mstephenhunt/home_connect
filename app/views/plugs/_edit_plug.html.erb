@@ -1,0 +1,42 @@
+<%# app/views/plugs/_edit_plug.html.erb %>
+
+<%= form_for(object, :html => { :class => "form-horizontal" }) do |o| %>
+    <div class="form-group">
+        <div class="col-sm-3">
+            <%= o.label :name, class: "col-sm-1 control-label" %>
+        </div>
+        <div class="col-sm-9">
+            <span class="form-row-glyphicon glyphicon glyphicon-tag" aria-hidden="true"></span>
+            <%= o.text_field :name, class: "modal-form form-control" %>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <div class="col-sm-3">
+            <%= o.label :feed_id, class: "col-sm-1 control-label" %>
+        </div>
+        <div class="col-sm-9">
+            <span class="form-row-glyphicon glyphicon glyphicon-link" aria-hidden="true"></span>
+            <%= o.text_field :feed_id, class: "modal-form form-control" %>     
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <div class="col-sm-3">
+            <%= o.label :room_id, class: "col-sm-1 control-label" %>
+        </div>
+        <div class="col-sm-9">
+            <span class="form-row-glyphicon glyphicon glyphicon-home" aria-hidden="true"></span>
+            <%= o.text_field :room_id, class: "modal-form form-control" %>     
+        </div>
+    </div>
+    
+    <div class="modal-footer">
+        <%= button_tag(type: 'submit', class: "btn button-save", id: "modal-submit") do %>
+            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+        <% end %>
+        <button type="button" class="btn button-cancel">
+            <span class="glyphicon glyphicon-remove" data-dismiss="modal" aria-hidden="true"></span>
+        </button>
+    </div>
+<% end %>

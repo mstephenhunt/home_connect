@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
     before_save     :before_save_user
+    after_create    :after_create_user
     
     has_many :rooms, dependent: :destroy
     has_many :plugs, dependent: :destroy
@@ -38,6 +39,11 @@ class User < ActiveRecord::Base
     private
         def before_save_user
             clean_email
+        end
+        
+        def after_create_user
+            # if you're creating a new user, create the default room 'Your plugs'
+            self.rooms.create(name: "Your Plugs")
         end
         
         def clean_email

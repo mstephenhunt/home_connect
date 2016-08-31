@@ -2,6 +2,20 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+// Global overrides
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+h2 {
+    font-weight: 600;
+}
+
+h4 {
+    font-weight: 600;
+}
+// End Global Overrides
+
 #menu_logo {
     padding: 5px;
 }
@@ -95,7 +109,6 @@
 }
 
 .plug-row-name {
-    font-family: sans-serif;
     margin: 0px;
     line-height: 55px;
     padding-left: 55px;
@@ -121,6 +134,7 @@
 .plug-toggle-on {
     box-shadow: 0px 0px 10px 3px rgba(120,235,139,1);
     background-color: #aaf7b6;
+    color: #006f13;
 }
 
 .plug-toggle-off {
@@ -166,8 +180,66 @@
 
 .room-title {
     margin-top: 0px;
-    font-family: Candara,Calibri,Segoe,Segoe UI,Optima,Arial,sans-serif;
-    font-weight: bold;
-    font-variant: small-caps;
+    font-size: 28px;
 }
 // End Room
+
+// Modals
+.modal-content {
+    background-color: #eee;
+}
+
+.modal-header {
+    border-bottom: none;
+    padding-bottom: 0px;
+}
+
+.modal-header-glyphicon {
+    padding-right: 10px;
+    padding-left: 8px;
+}
+
+.modal-header-element {
+    float: left;
+    font-size: 30px;
+    line-height: 35px;
+}
+
+.modal-header-inner {
+    line-height: 20px;
+    display: inline-block;
+    width: 100%;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #cccccc;
+}
+
+.modal-footer {
+    border-top: none;
+    padding: 0px 17px 10px 0px;
+}
+
+.form-row-glyphicon {
+    position: relative;
+    top: 11px;
+    left: 9px;
+    height: 0px;
+    float: left;
+}
+
+.modal-form {
+    padding-left: 27px;
+}
+// End modals
+
+// Buttons
+.button-save {
+    background-color: #aaf7b6;
+    color: #006f13;
+    width: 50px;
+}
+
+.button-cancel {
+    background-color: #a7b0a9;
+    width: 50px;
+}
+// End Buttons

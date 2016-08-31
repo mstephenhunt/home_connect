@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   post    'login'         => 'sessions#create'
   delete  'logout'        => 'sessions#destroy'
   get     'flip_plug'     => 'plugs#flip_plug'
+  get     'modals/:id'    => 'modals#show'
   resources :plugs
   resources :users
 

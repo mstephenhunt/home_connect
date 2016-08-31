@@ -14,5 +14,11 @@ FactoryGirl.define do
                 create(:plug, user: user, room: room)
             end
         end
+        
+        factory :user_with_room do
+            after(:create) do |user|
+                create(:room, user: user)
+            end
+        end
     end
 end

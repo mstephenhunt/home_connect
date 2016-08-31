@@ -2,13 +2,11 @@
 require 'spec_helper'
 
 RSpec.describe Plug, type: :model do
-    it { should belong_to(:user).dependent(:destroy) }
+    it { should belong_to(:user) }
     it { should belong_to(:room) }
-    it { should validate_presence_of(:feed_id) }
-    it { should validate_presence_of(:name) }
+    #it { should validate_presence_of(:feed_id) }
+    #it { should validate_presence_of(:name) }
     #it { should validate_inclusion_of(:state).in_array(['ON', 'OFF', 'ERR']) }
-    it { should validate_presence_of(:user_id) }
-    it { should validate_presence_of(:user) }        
 
                 ### Method Validations ###
     describe '.get_state()' do
@@ -92,6 +90,26 @@ RSpec.describe Plug, type: :model do
             # evaluate
             expect(@plug.get_state[:state]).not_to be_nil
             expect(@plug.get_state[:state]).to eq(@cached_plug.state)
-        end        
+        end     
+        
+        it 'defaults to Your Plugs for new plug without room' do
+            # setup
+            @user = FactoryGirl.create(:user)
+            @plug = @user.plugs.create(name: "test", feed_id: "int_test")
+
+            # evaluate
+            expect(@plug).to be_valid
+                
+            end
+            
+        it 'defaults to user of the specified room' do
+            # setup
+            @user = FactoryGirl.create(:user_with_room)
+            @room = @user.rooms.find_by(name: "Test room")
+            @plug = @room.plugs.create(name: "test plug", feed_id: "int_test")
+            
+            # evaluate
+            expect(@plug).to be_valid
+        end
     end
 end

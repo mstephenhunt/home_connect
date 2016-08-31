@@ -3,22 +3,32 @@
   <%= render "shared/header" %>
 </div>
 <div class="container">
-  <section class="room">
-    <h2 class="room-title">Your plugs</h2>
-    <% @plugs.each_with_index do |plug, index| %>
-    <%# render this every two plugs %>
-      <% if (index+1) % 2 == 0%>
-        <div class="row">
-          <%= render @plugs[index-1] %>
-          <%= render @plugs[index] %>
-        </div>
+  <%# Render each of the user's rooms with its plugs %>
+  <% @rooms.each do |room| %>
+    <section class="room">
+      <h2 class="room-title"><%= room.name %></h2>
+      <% @plugs.each_with_index do |plug, index| %>
+        <%# Put in plugs that belong to this room in two columns %>
+        <% if plug.room == room %>
         
-      <%# render this if the last plug is an odd number %>
-      <% elsif index+1 == @plugs.length %>
-        <div class="row">
-          <%= render @plugs[index] %>
+          <%# render this every two plugs %>
+          <% if (index+1) % 2 == 0%>
+            <div class="row">
+              <%= render @plugs[index-1] %>
+              <%= render @plugs[index] %>
+            </div>
+            
+          <%# render this if the last plug is an odd number %>
+          <% elsif index+1 == @plugs.length %>
+          <div class="row">
+            <%= render @plugs[index] %>
+          </div>
+          <% end %>
+        <% end %>
       <% end %>
-    <% end %>
-  </section>
+    </section>
+  <% end %>
+  
+  <div id="myModal"></div>
   <%= link_to "Add plug", new_plug_path %>
 </div>

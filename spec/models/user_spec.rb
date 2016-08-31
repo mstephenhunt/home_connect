@@ -90,4 +90,17 @@ RSpec.describe User, type: :model do
             expect(@find_user.errors.any?).to be_truthy
         end
     end
+    
+    describe 'before_save_user()' do
+        before(:each) do
+            @user = FactoryGirl.create(:user,   
+                                        email: "email@email.com",
+                                        password: "password",
+                                        password_confirmation: "password")
+        end
+        
+        it 'creates the default room to hold plugs' do
+            expect(@user.rooms.first.name).to eq("Your Plugs")
+        end
+    end
 end
