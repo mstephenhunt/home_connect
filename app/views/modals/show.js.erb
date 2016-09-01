@@ -9,8 +9,10 @@ $('#myModal').html("<%= j render :partial => @modal_partial,
                     %>");
 
 <%# Then render the specific dynamic form %>
-$('.modal-body').html("<%= j render :partial => @form_partial, 
-                                    locals: { :object => @object } %>");
+<% if !@form_partial.nil? %>
+    $('.modal-body').html("<%= j render :partial => @form_partial, 
+                                        locals: { :object => @object } %>");
+<% end %>
 
 <%# Show the modal %>
 $('<%= "#" + @modal_id %>').modal('show');
