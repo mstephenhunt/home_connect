@@ -39,6 +39,6 @@ class PlugsController < ApplicationController
     
     private
         def plug_params
-            params.require(:plug).permit(:name, :user_id, :feed_id)
+            params.require(:plug).permit(:name, :user_id, :feed_id, :room_id)
         end
 end

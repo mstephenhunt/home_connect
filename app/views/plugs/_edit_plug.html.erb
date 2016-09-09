@@ -26,8 +26,22 @@
             <%= o.label :room_id, class: "control-label" %>
         </div>
         <div class="col-xs-9">
-            <span class="form-row-glyphicon glyphicon glyphicon-home" aria-hidden="true"></span>
-            <%= o.text_field :room_id, class: "modal-form form-control" %>     
+
+            <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="edit-plug-room-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    <%= form_data[:current_room_name] %>
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="edit-plug-room-dropdown">
+                    <% form_data[:rooms].each do |r| %>
+                        <li><a href="#"><%= render r %></li>
+                    <% end %>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#">Add room</a></li>
+                </ul>
+            </div>
+            <!--<span class="form-row-glyphicon glyphicon glyphicon-home" aria-hidden="true"></span>-->
+            <%#= o.text_field :room_id, class: "modal-form form-control" %>     
         </div>
     </div>
     

@@ -26,6 +26,7 @@
                                     :form_partial => "plugs/edit_plug",
                                     :object_type => "Plug",
                                     :object_id => plug.id,
+                                    :room_id => plug.room_id,
                                     :remote => true,
                                     class: "dropdown-entry", 
                                     'data-toggle': 'modal', 
@@ -43,8 +44,7 @@
                                     :form_partial => "plugs/delete_plug",
                                     :object_type => "Plug",
                                     :object_id => plug.id,
-                                    :remote => true,
-                                    #method: :delete, 
+                                    :remote => true, 
                                     class: "dropdown-entry",
                                     'data-toggle': 'modal',
                                     'data-target': "#" + modal_id do %>
