@@ -30,9 +30,9 @@
         </div>
         <div class="col-xs-9">
             <div class="dropdown">
-                <button class="btn btn-default dropdown-toggle" type="button" id="edit-plug-room-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                    <span id="current-room-name"><%= form_data[:current_room_name] %></span>
-                    <span class="caret"></span>
+                <button class="btn btn-default dropdown-toggle dropdown" type="button" id="edit-plug-room-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    <span class="dropdown-label" id="current-room-name"><%= form_data[:current_room_name] %></span>
+                    <span class="caret dropdown-caret"></span>
                     <%# Hidden field used to hold the current room id %>
                     <%= o.text_field :room_id, id: "plug-room-id", style: "display: none" %>
                 </button>

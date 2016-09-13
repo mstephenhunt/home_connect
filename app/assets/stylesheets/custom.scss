@@ -231,6 +231,20 @@ h4 {
 .modal-form {
     padding-left: 27px;
 }
+
+.dropdown {
+    width: 100%;
+}
+
+.dropdown-label {
+    float: left;
+}
+
+.dropdown-caret {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+}
 // End modals
 
 // Buttons
