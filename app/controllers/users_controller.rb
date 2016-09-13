@@ -4,7 +4,6 @@ class UsersController < ApplicationController
     def show
         # Prevent the user from routing to anywhere but their user
         @user = User.find(@current_user.id)
-        @plugs = @user.plugs
         @rooms = @user.rooms.order(created_at: :asc)
     end
     

@@ -21,7 +21,7 @@ class ModalsController < ApplicationController
     end
     
         # The edit modal needs the list of rooms and the
-        # current room's name
+        # current room's name/id
         def edit_plug_data
             @form_data = Hash.new
             @form_data[:rooms] = Array.new
@@ -30,6 +30,7 @@ class ModalsController < ApplicationController
                 @form_data[:rooms].push r
                 
                 if r.id == @object.room_id
+                    @form_data[:current_room_id] = r.id
                     @form_data[:current_room_name] = r.name
                 end
             end

@@ -2,6 +2,7 @@
 
 <%= form_for(object, :html => { :class => "form-horizontal" }) do |o| %>
     <div class="form-group">
+        <!--Plug name-->
         <div class="col-xs-3">
             <%= o.label :name, class: "control-label" %>
         </div>
@@ -11,6 +12,7 @@
         </div>
     </div>
     
+    <!--Feed ID-->
     <div class="form-group">
         <div class="col-xs-3">
             <%= o.label :feed_id, class: "control-label" %>
@@ -21,27 +23,27 @@
         </div>
     </div>
     
+    <!--Room Selection-->
     <div class="form-group">
         <div class="col-xs-3">
             <%= o.label :room_id, class: "control-label" %>
         </div>
         <div class="col-xs-9">
-
             <div class="dropdown">
                 <button class="btn btn-default dropdown-toggle" type="button" id="edit-plug-room-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                    <%= form_data[:current_room_name] %>
+                    <span id="current-room-name"><%= form_data[:current_room_name] %></span>
                     <span class="caret"></span>
+                    <%# Hidden field used to hold the current room id %>
+                    <%= o.text_field :room_id, id: "plug-room-id", style: "display: none" %>
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="edit-plug-room-dropdown">
                     <% form_data[:rooms].each do |r| %>
-                        <li><a href="#"><%= render r %></li>
+                        <li><a class="room-selection" href="#"><%= render r, locals: { :room => r } %></a></li>
                     <% end %>
                     <li role="separator" class="divider"></li>
                     <li><a href="#">Add room</a></li>
                 </ul>
-            </div>
-            <!--<span class="form-row-glyphicon glyphicon glyphicon-home" aria-hidden="true"></span>-->
-            <%#= o.text_field :room_id, class: "modal-form form-control" %>     
+            </div> 
         </div>
     </div>
     
