@@ -5,6 +5,7 @@
 // Global overrides
 body {
     font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
 }
 
 h2 {
@@ -149,7 +150,7 @@ h4 {
     list-style: none;
 }
 
-.glyphicon-cog{
+.glyphicon-cog {
     color: gray;
 }
 
@@ -159,7 +160,7 @@ h4 {
     padding: 2px !important;
 }
 
-.dropdown-menu {
+.dropdown-menu-plug {
     min-width: 0px;
     left: -67px;
     top: 20px;
@@ -167,7 +168,18 @@ h4 {
 
 .dropdown-menu > li > a {
     padding: 3px 10px 3px 10px;
-    font-size: 16px;
+    font-size: 18px;
+}
+
+.modal-dropdown {
+    width: 100%;
+}
+.modal-label {
+    line-height: 100%;
+}
+
+.close {
+    font-size: 34px;
 }
 // End Plug Rows
 
@@ -222,14 +234,15 @@ h4 {
 
 .form-row-glyphicon {
     position: relative;
-    top: 11px;
+    top: 9px;
     left: 9px;
     height: 0px;
     float: left;
 }
 
 .modal-form {
-    padding-left: 27px;
+    padding-left: 30px;
+    font-size: 18px;
 }
 
 .dropdown {
@@ -238,12 +251,21 @@ h4 {
 
 .dropdown-label {
     float: left;
+    font-size: 18px;
+}
+
+.modal-dropdown {
+    padding: 4px 12px 3px 12px;
 }
 
 .dropdown-caret {
     position: absolute;
     right: 15px;
     top: 15px;
+}
+
+.room-selection {
+    font-size: 14px;
 }
 // End modals
 

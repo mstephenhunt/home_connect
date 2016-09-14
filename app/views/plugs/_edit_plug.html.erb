@@ -4,7 +4,7 @@
     <div class="form-group">
         <!--Plug name-->
         <div class="col-xs-3">
-            <%= o.label :name, class: "control-label" %>
+            <%= o.label :name, class: "control-label modal-label" %>
         </div>
         <div class="col-xs-9">
             <span class="form-row-glyphicon glyphicon glyphicon-tag" aria-hidden="true"></span>
@@ -15,7 +15,7 @@
     <!--Feed ID-->
     <div class="form-group">
         <div class="col-xs-3">
-            <%= o.label :feed_id, class: "control-label" %>
+            <%= o.label :feed_id, class: "control-label modal-label" %>
         </div>
         <div class="col-xs-9">
             <span class="form-row-glyphicon glyphicon glyphicon-link" aria-hidden="true"></span>
@@ -26,17 +26,17 @@
     <!--Room Selection-->
     <div class="form-group">
         <div class="col-xs-3">
-            <%= o.label :room_id, class: "control-label" %>
+            <%= o.label :room_id, class: "control-label modal-label" %>
         </div>
         <div class="col-xs-9">
             <div class="dropdown">
-                <button class="btn btn-default dropdown-toggle dropdown" type="button" id="edit-plug-room-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                <button class="btn btn-default dropdown-toggle dropdown modal-dropdown" type="button" id="edit-plug-room-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                     <span class="dropdown-label" id="current-room-name"><%= form_data[:current_room_name] %></span>
                     <span class="caret dropdown-caret"></span>
                     <%# Hidden field used to hold the current room id %>
                     <%= o.text_field :room_id, id: "plug-room-id", style: "display: none" %>
                 </button>
-                <ul class="dropdown-menu" aria-labelledby="edit-plug-room-dropdown">
+                <ul class="modal-dropdown dropdown-menu" aria-labelledby="edit-plug-room-dropdown">
                     <% form_data[:rooms].each do |r| %>
                         <li><a class="room-selection" href="#"><%= render r, locals: { :room => r } %></a></li>
                     <% end %>
