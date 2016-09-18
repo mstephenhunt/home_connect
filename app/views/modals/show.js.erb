@@ -1,5 +1,8 @@
 <%# app/views/modals/show.js.erb %>
-var room_id;
+
+<%# This is used to dynamically render modals, the modal type and variables
+    are passed from the modals#show action 
+%>
 
 <%# First render the modal %>
 $('#myModal').html("<%= j render :partial => @modal_partial, 
@@ -22,16 +25,4 @@ $('<%= "#" + @modal_id %>').modal('show');
 <%# Put a listener for submitting %>
 $('#modal-submit').click(function() {
     $('<%= "#" + @modal_id %>').modal('hide');
-});
-
-<%# Closes the edit room dropdown without changing the page (the entries are <a> tags) %>
-$('.room-selection').click(function() {
-    $("#edit-plug-room-dropdown").dropdown("toggle"); 
-    $('#current-room-name').html($(this).html());
-    
-    <%# Update plug[room_id] to reflect the newest room id %>
-    $('#plug-room-id').attr("value", $(this).find("span:last").text());
-    
-    <%# returning false prevents the page from submitting %>
-    return false;
 });
