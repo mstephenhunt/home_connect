@@ -20,7 +20,7 @@ class PlugsController < ApplicationController
     def update
         # If the user has provided a new room, create that new room and associate
         # this plug with that room
-        if !params[:plug][:new_room_name].nil?
+        if params[:plug][:new_room_name] != ""
             room = current_user.rooms.create(name: params[:plug][:new_room_name])
             params[:plug][:room_id] = room.id
         end
@@ -47,6 +47,6 @@ class PlugsController < ApplicationController
     
     private
         def plug_params
-            params.require(:plug).permit(:name, :user_id, :feed_id, :room_id)
+            params.require(:plug).permit(:name, :user_id, :feed_id, :room_id, :new_room_name)
         end
 end

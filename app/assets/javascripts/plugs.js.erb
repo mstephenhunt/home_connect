@@ -3,18 +3,34 @@ $(document).on('ready page:load', function () {
     
     // This function is used to control the edit plug modal dropdown
     $('#myModal').on("click", ".room-selection", function() {
+        
+        // Toggle the dropdown to open it
         $("#edit-plug-room-dropdown").dropdown("toggle"); 
+        
+        // Set the display value to this
         $('#current-room-name').html($(this).html());
         
+        // Set the room-id hidden field
         $('#plug-room-id').attr("value", $(this).find("span:last").text());
+        
+        // Slide up the hidden room div in case that was seleted
+        $("#new-room").slideUp("slow", function() {
+        });
         
         return false;
     });
 
     // Used to slide out the new room creation form on plug edit
     $('#myModal').on("click", "#add-room", function () {
+        
+        // Toggle the dropdown the open it
         $("#edit-plug-room-dropdown").dropdown("toggle");
-        $( "#new-room" ).slideDown( "slow", function() {
+        
+        // Set the display value to this
+        $('#current-room-name').html($(this).html());
+        
+        // Slide down the hidden div to reveal it
+        $("#new-room").slideDown("slow", function() {
         });
         
         return false;

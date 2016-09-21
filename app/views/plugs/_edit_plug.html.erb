@@ -34,7 +34,7 @@
                     <span class="dropdown-label" id="current-room-name"><%= form_data[:current_room_name] %></span>
                     <span class="caret dropdown-caret"></span>
                     <%# Hidden field used to hold the current room id %>
-                    <%= o.text_field :room_id, id: "plug-room-id", style: "display: none" %>
+                    <%= o.text_field :room_id, id: "plug-room-id", class: "default-hide" %>
                 </button>
                 <ul class="modal-dropdown dropdown-menu" aria-labelledby="edit-plug-room-dropdown">
                     <% form_data[:rooms].each do |r| %>
