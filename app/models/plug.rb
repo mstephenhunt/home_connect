@@ -3,6 +3,10 @@ class Plug < ActiveRecord::Base
   belongs_to          :user
   belongs_to          :room
   
+  # Can get this attribute from the edit_plug modal where we can create a room
+  # from a plug
+  attr_accessor       :new_room_name
+  
   before_validation   :before_validation
   
   validates :name,    presence: true

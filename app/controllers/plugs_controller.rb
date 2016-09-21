@@ -18,6 +18,14 @@ class PlugsController < ApplicationController
     end
     
     def update
+        # If the user has provided a new room, create that new room and associate
+        # this plug with that room
+        if !params[:plug][:new_room_name].nil?
+            room = current_user.rooms.create(name: params[:plug][:new_room_name])
+            params[:plug][:room_id] = room.id
+        end
+        
+        # Update the plug
         @plug = Plug.find(params[:id])
         if @plug.update_attributes(plug_params)
             redirect_to current_user

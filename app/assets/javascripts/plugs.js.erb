@@ -10,5 +10,14 @@ $(document).on('ready page:load', function () {
         
         return false;
     });
+
+    // Used to slide out the new room creation form on plug edit
+    $('#myModal').on("click", "#add-room", function () {
+        $("#edit-plug-room-dropdown").dropdown("toggle");
+        $( "#new-room" ).slideDown( "slow", function() {
+        });
+        
+        return false;
+    });
 });
 
