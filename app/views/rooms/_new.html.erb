@@ -1,10 +1,10 @@
 <%# app/assets/views/rooms/_new.html.erb %>
-<div class="form-group default-hide" id="new-room">
+<div class="modal-form-group form-group default-hide" id="new-room">
     <div class="col-xs-3">
-        <%= new_room.label :new_room, class: "control-label modal-label" %>
+        <%= new_room.label :new_room, class: "modal-label control-label" %>
     </div>
     <div class="col-xs-9">
-        <span class="form-row-glyphicon glyphicon glyphicon-link" aria-hidden="true"></span>
+        <span class="form-row-glyphicon glyphicon glyphicon-home" aria-hidden="true"></span>
         <%= new_room.text_field :new_room_name, class: "modal-form form-control" %>     
     </div>
 </div>
