@@ -44,6 +44,7 @@ class Plug < ActiveRecord::Base
     
     # if an error has been returned, return the error hash
     if (defined? write_out[:error])
+      puts "ERROR in writing to Adafruit: #{write_out[:error]}"
       return write_out
     end
     

@@ -33,8 +33,8 @@ class Plug
                 data = aio.feeds(feed_id).data.last
                 data.value = state
                 data.save
-            rescue StandardError
-                return :error => "threw exception"
+            rescue Exception => e
+                return :error => "Adafruit threw exception: #{e}"
             end
         end
         
