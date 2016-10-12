@@ -21,6 +21,3 @@
 
 # Ignore application.yml which holds keys
 /config/application.yml
-
-# Ignore precompiled assets
-/public/assets/**
